@@ -145,6 +145,10 @@ static Key keys[] = {
 	STACKKEYS(MODKEY,                          focus)
 	STACKKEYS(MODKEY|ShiftMask,                push)
 	{ MODKEY|ShiftMask,            	XK_Return, togglescratch,  {.ui = 0 } },
+	{ MODKEY,			XK_g,	   shiftview,	   {.i = -1 } },
+	{ MODKEY|ShiftMask,		XK_g,	   shifttag,       {.i = -1 } },
+	{ MODKEY,			XK_semicolon,  shiftview,  {.i = +1 } },
+	{ MODKEY|ShiftMask,		XK_semicolon,  shifttag,   {.i = +1 } },
 };
 
 /* button definitions */
