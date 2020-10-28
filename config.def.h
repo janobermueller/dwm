@@ -149,6 +149,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_g,	   shifttag,       {.i = -1 } },
 	{ MODKEY,			XK_semicolon,  shiftview,  {.i = +1 } },
 	{ MODKEY|ShiftMask,		XK_semicolon,  shifttag,   {.i = +1 } },
+	{ MODKEY,                       XK_f,      togglefullscr,  {0} },
 };
 
 /* button definitions */
