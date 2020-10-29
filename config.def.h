@@ -59,6 +59,7 @@ static const Layout layouts[] = {
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 	{ "[#]",      nrowgrid },
+	{ "[D]",      deck },
 };
 
 /*
@@ -152,6 +153,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_semicolon,  shifttag,   {.i = +1 } },
 	{ MODKEY,                       XK_f,      togglefullscr,  {0} },
 	{ MODKEY|ShiftMask,             XK_u,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY|ShiftMask,             XK_y,      setlayout,      {.v = &layouts[4]} },
 };
 
 /* button definitions */
