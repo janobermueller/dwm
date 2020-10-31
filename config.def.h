@@ -60,6 +60,8 @@ static const Layout layouts[] = {
 	{ "[M]",      monocle },
 	{ "[#]",      nrowgrid },
 	{ "[D]",      deck },
+	{ "|M|",      centeredmaster },
+	{ ">M>",      centeredfloatingmaster },
 };
 
 /*
@@ -154,6 +156,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_f,      togglefullscr,  {0} },
 	{ MODKEY|ShiftMask,             XK_u,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY|ShiftMask,             XK_y,      setlayout,      {.v = &layouts[4]} },
+	{ MODKEY,                       XK_i,      setlayout,      {.v = &layouts[5]} },
+	{ MODKEY|ShiftMask,             XK_i,      setlayout,      {.v = &layouts[6]} },
 };
 
 /* button definitions */
