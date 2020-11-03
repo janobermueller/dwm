@@ -184,6 +184,7 @@ static void arrange(Monitor *m);
 static void arrangemon(Monitor *m);
 static void attach(Client *c);
 static void attachstack(Client *c);
+static void bstack(Monitor *m);
 static void buttonpress(XEvent *e);
 static void checkotherwm(void);
 static void centeredmaster(Monitor *m);
@@ -529,6 +530,43 @@ unswallow(Client *c)
 	setclientstate(c, NormalState);
 	focus(NULL);
 	arrange(c->mon);
+}
+
+static void
+bstack(Monitor *m)
+{
+	unsigned int i, n;
+	int mx, my, mh, mw, sx = 0, sy = 0, sh = 0, sw = 0, oh, ov, ih, iv;
+	float mfacts, sfacts;
+	Client *c;
+
+	getgaps(m, &oh, &ov, &ih, &iv, &n, &mfacts, &sfacts);
+
+	if (n == 0)
+		return;
+
+	sx = mx = m->wx + ov;
+	sy = my = m->wy + oh;
+	sh = mh = m->wh - 2*oh;
+	sw = mw = m->ww - 2*ov - iv * (MIN(n, m->nmaster) - 1);
+
+	if (m->nmaster && n > m->nmaster) {
+		sh = (mh - ih) * (1 - m->mfact);
+		mh = (mh - ih) * m->mfact;
+		sx = mx;
+		sy = my + mh + ih;
+		sw = m->ww - 2*ov - iv * (n - m->nmaster - 1);
+	}
+
+	for (i = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++) {
+		if (i < m->nmaster) {
+			resize(c, mx, my, mw / mfacts - (2*c->bw), mh - (2*c->bw), 0);
+			mx += WIDTH(c) + iv;
+		} else {
+			resize(c, sx, sy, sw / sfacts - (2*c->bw), sh - (2*c->bw), 0);
+			sx += WIDTH(c) + iv;
+		}
+	}
 }
 
 void

@@ -62,6 +62,7 @@ static const Layout layouts[] = {
 	{ "[D]",      deck },
 	{ "|M|",      centeredmaster },
 	{ ">M>",      centeredfloatingmaster },
+	{ "TTT",      bstack },
 };
 
 /*
@@ -158,6 +159,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_y,      setlayout,      {.v = &layouts[4]} },
 	{ MODKEY,                       XK_i,      setlayout,      {.v = &layouts[5]} },
 	{ MODKEY|ShiftMask,             XK_i,      setlayout,      {.v = &layouts[6]} },
+	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[7]} },
 };
 
 /* button definitions */
